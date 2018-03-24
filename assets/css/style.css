@@ -1,0 +1,11 @@
+header, footer{
+    color: rebeccapurple;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    float: top;
+    text-align: center;
+}
+#timerDisplay{
+    text-align: center;
+    color: red;
+}
+
