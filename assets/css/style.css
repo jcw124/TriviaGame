@@ -1,3 +1,6 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif
+}
 header, footer{
     color: rebeccapurple;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -7,5 +10,9 @@ header, footer{
 #timerDisplay{
     text-align: center;
     color: red;
+}
+.choices{
+    text-align: center;
+    color: blue;
 }
 
