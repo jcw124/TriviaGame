@@ -41,7 +41,7 @@ function Questions() {
 
   $("#questions").append(questions[ticker].question);
   var questionText = questions[ticker].question;
-  var answer = questions[ticker].answer;
+  var answer = questions[ticker].answer
 
   console.log("The answer  " + answer + " to the question  " + questions[ticker].question);
 
@@ -56,24 +56,45 @@ function Questions() {
   choiced.append(questions[ticker].choices[3]);
 
   $("#questions").append(choicea, choiceb, choicec, choiced);
- 
+
 
   $("#choicea").click(function () {
     console.log(answer);
     console.log(questions[ticker].choices[0]);
     if (answer == questions[ticker].choices[0]) {
       console.log("you are correct");
+      correct++
+      console.log("the number correct is " + correct);
+      ticker++;
+      console.log("the ticker is " + ticker);
+      Questions();
+    } else {
+      console.log("this is the wrong answer");
+      incorrect++
+      console.log("the number incorrect is " + incorrect);
+      ticker++;
+      console.log(ticker);
+      Questions();
     }
-    console.log("this is the wrong answer");
-
   });
   $("#choiceb").click(function () {
     console.log(answer);
     console.log(questions[ticker].choices[1]);
     if (answer == questions[ticker].choices[1]) {
       console.log("you are correct");
+      correct++
+      console.log("the number correct is " + correct);
+      ticker++;
+      console.log("the ticker is " + ticker);
+      Questions();
+    } else {
+      console.log("this is the wrong answer");
+      incorrect++
+      console.log("the number incorrect is " + incorrect);
+      ticker++;
+      console.log(ticker);
+      Questions();
     }
-    console.log("this is the wrong answer");
   });
 
   $("#choicec").click(function () {
@@ -81,8 +102,19 @@ function Questions() {
     console.log(questions[ticker].choices[2]);
     if (answer == questions[ticker].choices[2]) {
       console.log("you are correct");
+      correct++
+      console.log("the number correct is " + correct);
+      ticker++;
+      console.log("the ticker is " + ticker);
+      Questions();
+    } else {
+      console.log("this is the wrong answer");
+      incorrect++
+      console.log("the number incorrect is " + incorrect);
+      ticker++;
+      console.log(ticker);
+      Questions();
     }
-    console.log("this is the wrong answer");
   });
 
   $("#choiced").click(function () {
@@ -90,90 +122,111 @@ function Questions() {
     console.log(questions[ticker].choices[3]);
     if (answer == questions[ticker].choices[3]) {
       console.log("you are correct");
-    }
-    console.log("this is the wrong answer");
-
+      correct++
+      console.log("the number correct is " + correct);
+      ticker++;
+      console.log("the ticker is " + ticker);
+      Questions();
+    } else {
+      console.log("this is the wrong answer");
+      incorrect++
+      console.log("the number incorrect is " + incorrect);
+      ticker++;
+      console.log(ticker);
+      Questions();
+    }  
   });
-
-  //ticker++
-  console.log(ticker);
-
-
+  
 };
-Questions();
 
 
 
 
-      // //Create new div
-      // var newDiv = $("<div class='questions'>");
-      // var questionText = "Question:" + question[0].question;
-      // newDiv.append("<p>"+ questionText + "</p>");
+//function endgame(){
+//   console.log("this is the end game function");
+//   $("#questions").empty();
+//   var CorrectAnswers = $("<div id='correct' class='results'>")
+//   var IncorrectAnswers = $("<div id='incorrect' class='results'>")
+//   var NotAnswered = $("<div id='unanswered' class='results'>")
 
-      // // send new div to HTML
+//   CorrectAnswers.append("Questions answered Correctly: " + correct);
+//   IncorrectAnswers.append("Questions answered Incorrectly: " + incorrect);
+//   NotAnswered.append("Questions not answered: " + unanswered);
 
+// }
 
+function startgame() {
+  if (ticker <= 10) {
+    console.log(ticker);
+    Questions();
+  } else
+    console.log("The game is over")
+  //  endgame();
+};
 
-
-
-
-
-
-      //Define array of questions and answers 20 questions
-      // arrays
-      //    -question
-      //    -choices
-      //    -answer
-
-      //    random (i)
-
-      // loop through 10 questions
-
-      // Clickable Button to begin the game
-
-
-      //Display directions of game with countdown to start
-
-      // display Timer
-
-      //display question
-
-      //display answer
-
-      //Verfications 
-      //if the timer expires go to the next question
-      //if an answer is selected check if its right or wrong
-      //increment the number of question displayed
-
-      //if the answer is right then display and imag
-      // increment the correct answers variable
-      //increment the number of question displayed
-      // go to the next question
-
-
-
-      // if the answer is wrong then show the correct answer and go to the next question
-      //increment the incorrect answers variable 
-      //go to the next question
-      //increment the number of question displayed
-
-
-      //if # of quesitons displayed is equal to ten  then go to summary 
-
-
-      //Summary should display 
-      //Total number of questions attempted
-      //Total number of correct Answers
-      //Total number of incorrect Answers
-      //Total number of unanswred Questions
-
-      //Do you want to play again
+startgame();
 
 
 
 
 
-      //Nice to haves once the basics are done
-      // images for the correct Answers
-      // audio for correct Answers
-      // audio for incorrect Answers
+
+// $("#scores").html("Current Score: " + score);
+
+
+
+
+
+
+
+
+// loop through 10 questions
+
+// Clickable Button to begin the game
+
+
+//Display directions of game with countdown to start
+
+// display Timer
+
+//display question
+
+//display answer
+
+//Verfications 
+//if the timer expires go to the next question
+//if an answer is selected check if its right or wrong
+//increment the number of question displayed
+
+//if the answer is right then display and imag
+// increment the correct answers variable
+//increment the number of question displayed
+// go to the next question
+
+
+
+// if the answer is wrong then show the correct answer and go to the next question
+//increment the incorrect answers variable 
+//go to the next question
+//increment the number of question displayed
+
+
+//if # of quesitons displayed is equal to ten  then go to summary 
+
+
+//Summary should display 
+//Total number of questions attempted
+//Total number of correct Answers
+//Total number of incorrect Answers
+//Total number of unanswred Questions
+
+//Do you want to play again
+
+
+
+
+
+//Nice to haves once the basics are done
+// images for the correct Answers
+// audio for correct Answers
+// audio for incorrect Answers
