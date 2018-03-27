@@ -6,10 +6,10 @@ header, footer{
     color: royalblue;
     font-weight: bolder;
     font-style: italic;
-    font-size: 75px;
+    font-size: 60px;
     background-color: pink;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
+    padding: 25px;
 }
 #timerDisplay{
     text-align: center;
@@ -22,12 +22,20 @@ header, footer{
     padding: 15px;
 }
 #questions{
-    padding: 20px;
+    padding: 15px;
     font-size: 250%;
+    margin: 15px;
 }
 #quizarea{
+    border-radius: 25px;
     background-color: white;
 }
 body{
     background: url(../images/hiphop.jpg);
+}
+row{
+    padding: 10pt;
+}
+.container{
+    margin: 
 }

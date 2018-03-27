@@ -17,12 +17,26 @@ var unanswered;
 //Time remaining
 var remainingTime = maxTimer;
 
+var intervalID = setInterval(countdown, 1000);
 var ticker = 0;
+
+// // Create an audio element with JavaScript
+// var audioElement = document.createElement("audio");
+
+// // Set it's source to the location
+// // of our Captain Planet theme song file.
+// audioElement.setAttribute("src", "../assets/audio/gang-starr-check-the-technique-instrumental.mp3");
+// audioElement.play();
+
+
+function startcountdown(){
+  remainingTime = maxTimer;
+  intervalID = setInterval(countdown, 1000);
+}
 
 
 //pass function as the first parameter, time as the second parameter
 function countdown() {
-  var intervalID = setInterval(countdown, 1000);
   if (remainingTime < 1) {
     clearInterval(intervalID);
     console.log("Times Up!");
@@ -34,9 +48,20 @@ function countdown() {
   console.log("time in the countdown function is " + remainingTime);
 }
 
+
+
+
+
+
+
 function Questions() {
   $("#questions").empty();
-
+  
+  if (ticker == 10){ 
+    endgame();
+  }
+else
+ { 
   console.log(questions[ticker]);
 
   $("#questions").append(questions[ticker].question);
@@ -57,6 +82,7 @@ function Questions() {
 
   $("#questions").append(choicea, choiceb, choicec, choiced);
 
+  startcountdown();
 
   $("#choicea").click(function () {
     console.log(answer);
@@ -134,20 +160,25 @@ function Questions() {
       ticker++;
       console.log(ticker);
       Questions();
-    }  
+    }
   });
-  
+ }
 };
 
+function timesup(){
+  Questions();
+}
 
 
+function endgame(){
+  console.log("this is the end game function");
+  $("#questions").empty();
+  var CorrectAnswers = $("<div id='correct' class='results'>")
+  var IncorrectAnswers = $("<div id='incorrect' class='results'>")
+  var NotAnswered = $("<div id='unanswered' class='results'>")
+}
 
-//function endgame(){
-//   console.log("this is the end game function");
-//   $("#questions").empty();
-//   var CorrectAnswers = $("<div id='correct' class='results'>")
-//   var IncorrectAnswers = $("<div id='incorrect' class='results'>")
-//   var NotAnswered = $("<div id='unanswered' class='results'>")
+Questions();
 
 //   CorrectAnswers.append("Questions answered Correctly: " + correct);
 //   IncorrectAnswers.append("Questions answered Incorrectly: " + incorrect);
@@ -155,16 +186,19 @@ function Questions() {
 
 // }
 
-function startgame() {
-  if (ticker <= 10) {
-    console.log(ticker);
-    Questions();
-  } else
-    console.log("The game is over")
-  //  endgame();
-};
 
-startgame();
+
+
+// function startgame() {
+//   if (ticker <= 10) {
+//     console.log(ticker);
+//     Questions();
+//   } else
+//     console.log("The game is over")
+//   //  endgame();
+// };
+
+// startgame();
 
 
 
