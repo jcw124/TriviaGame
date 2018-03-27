@@ -21,12 +21,12 @@ var intervalID = setInterval(countdown, 1000);
 var ticker = 0;
 
 // // Create an audio element with JavaScript
-// var audioElement = document.createElement("audio");
+ var audioElement = document.createElement("audio");
 
 // // Set it's source to the location
-// // of our Captain Planet theme song file.
-// audioElement.setAttribute("src", "../assets/audio/gang-starr-check-the-technique-instrumental.mp3");
-// audioElement.play();
+
+audioElement.setAttribute("src", "assets/audio/gang-starr-check-the-technique-instrumental.mp3");
+audioElement.play();
 
 
 function startcountdown(){
@@ -38,9 +38,10 @@ function startcountdown(){
 //pass function as the first parameter, time as the second parameter
 function countdown() {
   if (remainingTime < 1) {
-    clearInterval(intervalID);
+   // clearInterval(intervalID);
     console.log("Times Up!");
     $("#timerDisplay").html("<h2>" + " Times Up!" + "</h2>");
+    clearInterval;
     return;
   }
   $("#timerDisplay").html("<h2>" + remainingTime + " seconds" + "</h2>");

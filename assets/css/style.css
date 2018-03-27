@@ -2,19 +2,31 @@
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     text-align: center;
 }
-header, footer{
+header{
     color: royalblue;
     font-weight: bolder;
     font-style: italic;
     font-size: 60px;
     background-color: pink;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 25px;
+    margin-bottom: 25px;
+}
+footer{
+    color: royalblue;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 60px;
+    background-color: pink;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 25px;
+    bottom:
 }
 #timerDisplay{
     text-align: center;
     color: red;
-    font-size: 150%;
+    font-size: 200%;
+    background-color: azure;
+    margin: 25px;
 }
 .choices{
     color: blue;
@@ -33,9 +45,4 @@ header, footer{
 body{
     background: url(../images/hiphop.jpg);
 }
-row{
-    padding: 10pt;
-}
-.container{
-    margin: 
-}
+
