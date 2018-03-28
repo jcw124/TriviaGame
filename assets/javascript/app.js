@@ -3,7 +3,7 @@ $(document).ready(function () {});
 
 //Define global Variables
 //Timers starting value (60s)
-var maxTimer = 10;
+var maxTimer = 30;
 //Questions & Answers Arrays
 var questions;
 //Correct Answers
@@ -13,11 +13,13 @@ var incorrect = 0;
 // Total questions displayed
 var totalQuestions;
 //Unanswered 
-var unanswered;
+var unanswered = 0;
 //Time remaining
 var remainingTime = maxTimer;
 
-var intervalID = setInterval(countdown, 1000);
+
+
+//var intervalID; // = setInterval(countdown, 1000);
 var ticker = 0;
 
 // // Create an audio element with JavaScript
@@ -38,11 +40,13 @@ function startcountdown(){
 //pass function as the first parameter, time as the second parameter
 function countdown() {
   if (remainingTime < 1) {
-   // clearInterval(intervalID);
+   clearInterval(intervalID);
+   stop(intervalID);
     console.log("Times Up!");
     $("#timerDisplay").html("<h2>" + " Times Up!" + "</h2>");
-    clearInterval;
-    return;
+    clearInterval(intervalID);
+   stop(intervalID);
+   return;
   }
   $("#timerDisplay").html("<h2>" + remainingTime + " seconds" + "</h2>");
   remainingTime--;
@@ -57,9 +61,10 @@ function countdown() {
 
 function Questions() {
   $("#questions").empty();
-  
+  $("#timerDisplay").empty();
   if (ticker == 10){ 
     endgame();
+    
   }
 else
  { 
@@ -75,6 +80,7 @@ else
   var choiceb = $("<div id='choiceb' class='choices'>")
   var choicec = $("<div id='choicec' class='choices'>")
   var choiced = $("<div id='choiced' class='choices'>")
+  
 
   choicea.append(questions[ticker].choices[0]);
   choiceb.append(questions[ticker].choices[1]);
@@ -171,23 +177,35 @@ function timesup(){
 }
 
 
+Questions();
+
+//Summary should display number of correct Answers,incorrect Answers
 function endgame(){
   console.log("this is the end game function");
+
   $("#questions").empty();
+  
+  $("#timerDisplay").empty();
+
   var CorrectAnswers = $("<div id='correct' class='results'>")
   var IncorrectAnswers = $("<div id='incorrect' class='results'>")
   var NotAnswered = $("<div id='unanswered' class='results'>")
+  
+  CorrectAnswers.append("<p>" + "Total Correct Answers: " + correct + "<p>");
+  IncorrectAnswers.append("<p>" + "Total Incorrect Answers:  " + incorrect + "<p>" );
+  NotAnswered.append("Total Unanswered Questions:  " + unanswered);
+
+
+  $("#questions").append(CorrectAnswers, IncorrectAnswers);
+
+
+
 }
 
-Questions();
 
-//   CorrectAnswers.append("Questions answered Correctly: " + correct);
-//   IncorrectAnswers.append("Questions answered Incorrectly: " + incorrect);
-//   NotAnswered.append("Questions not answered: " + unanswered);
+ 
 
-// }
-
-
+//   CorrectAnswers.append("Questions answered Cor
 
 
 // function startgame() {
@@ -249,19 +267,9 @@ Questions();
 //if # of quesitons displayed is equal to ten  then go to summary 
 
 
-//Summary should display 
-//Total number of questions attempted
-//Total number of correct Answers
-//Total number of incorrect Answers
-//Total number of unanswred Questions
+
 
 //Do you want to play again
 
 
 
-
-
-//Nice to haves once the basics are done
-// images for the correct Answers
-// audio for correct Answers
-// audio for incorrect Answers
