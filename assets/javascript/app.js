@@ -43,9 +43,11 @@ function countdown() {
    clearInterval(intervalID);
    stop(intervalID);
     console.log("Times Up!");
+
     $("#timerDisplay").html("<h2>" + " Times Up!" + "</h2>");
     clearInterval(intervalID);
    stop(intervalID);
+   $("#timerDisplay").empty();
    return;
   }
   $("#timerDisplay").html("<h2>" + remainingTime + " seconds" + "</h2>");
@@ -61,7 +63,7 @@ function countdown() {
 
 function Questions() {
   $("#questions").empty();
-  $("#timerDisplay").empty();
+  $("<h2>").empty();
   if (ticker == 10){ 
     endgame();
     
