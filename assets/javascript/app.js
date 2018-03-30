@@ -3,7 +3,7 @@ $(document).ready(function () {});
 
 //Define global Variables
 //Timers starting value (60s)
-var maxTimer = 30;
+var maxTimer = 10;
 //Questions & Answers Arrays
 var questions;
 //Correct Answers
@@ -15,15 +15,16 @@ var totalQuestions;
 //Unanswered 
 var unanswered = 0;
 //Time remaining
-var remainingTime = maxTimer;
-
+var remainingTime;
+var correctanswer;
+var answer;
 
 
 //var intervalID; // = setInterval(countdown, 1000);
 var ticker = 0;
 
 // // Create an audio element with JavaScript
- var audioElement = document.createElement("audio");
+var audioElement = document.createElement("audio");
 
 // // Set it's source to the location
 
@@ -31,7 +32,7 @@ audioElement.setAttribute("src", "assets/audio/gang-starr-check-the-technique-in
 audioElement.play();
 
 
-function startcountdown(){
+function startcountdown() {
   remainingTime = maxTimer;
   intervalID = setInterval(countdown, 1000);
 }
@@ -39,162 +40,189 @@ function startcountdown(){
 
 //pass function as the first parameter, time as the second parameter
 function countdown() {
-  if (remainingTime < 1) {
-   clearInterval(intervalID);
-   stop(intervalID);
-    console.log("Times Up!");
-
-    $("#timerDisplay").html("<h2>" + " Times Up!" + "</h2>");
+  console.log("this is remaining time" + remainingTime);
+  if (remainingTime == 0) {
     clearInterval(intervalID);
-   stop(intervalID);
-   $("#timerDisplay").empty();
-   return;
+    //  stop(intervalID);
+    console.log("Times Up!");
+    console.log(correctanswer);
+    $("#timerDisplay").html("<h2>" + " Times Up!" + "</h2>");
+    $("#timerDisplay").empty();
+    reveal();
+    return;
   }
   $("#timerDisplay").html("<h2>" + remainingTime + " seconds" + "</h2>");
   remainingTime--;
   console.log("time in the countdown function is " + remainingTime);
 }
 
-
-
-
-
-
-
 function Questions() {
   $("#questions").empty();
   $("<h2>").empty();
-  if (ticker == 10){ 
+  if (ticker == 20) {
     endgame();
-    
+  } else {
+    console.log(questions[ticker]);
+
+    $("#questions").append(questions[ticker].question);
+    var questionText = questions[ticker].question;
+    var answer = questions[ticker].answer;
+
+    console.log("The answer  " + answer + " to the question  " + questions[ticker].question);
+
+    var choicea = $("<div id='choicea' class='choices'>");
+    var choiceb = $("<div id='choiceb' class='choices'>");
+    var choicec = $("<div id='choicec' class='choices'>");
+    var choiced = $("<div id='choiced' class='choices'>");
+    correctanswer = $("<div id='answer' class='answer'>");
+
+    choicea.append(questions[ticker].choices[0]);
+    choiceb.append(questions[ticker].choices[1]);
+    choicec.append(questions[ticker].choices[2]);
+    choiced.append(questions[ticker].choices[3]);
+
+    // correctanswer.append(answer);
+    // console.log("correctanswer is " + answer);
+
+    $("#questions").append(choicea, choiceb, choicec, choiced);
+
+    startcountdown();
+
+    $("#choicea").click(function () {
+      console.log(answer);
+      console.log(questions[ticker].choices[0]);
+      if (answer == questions[ticker].choices[0]) {
+        console.log("you are correct");
+        correct++
+        console.log("the number correct is " + correct);
+      //  ticker++;
+        console.log("the ticker is " + ticker);
+        reveal();
+      } else {
+        console.log("this is the wrong answer");
+        incorrect++
+        console.log("the number incorrect is " + incorrect);
+    //    ticker++;
+        console.log(ticker);
+        reveal();
+      }
+    });
+    $("#choiceb").click(function () {
+      console.log(answer);
+      console.log(questions[ticker].choices[1]);
+      if (answer == questions[ticker].choices[1]) {
+        console.log("you are correct");
+        correct++
+        console.log("the number correct is " + correct);
+       // ticker++;
+        console.log("the ticker is " + ticker);
+        reveal();
+       // nextQuestion();
+      } else {
+        console.log("this is the wrong answer");
+        incorrect++
+        console.log("the number incorrect is " + incorrect);
+      //  ticker++;
+        console.log(ticker);
+      //  nextQuestion();
+        reveal();
+      }
+    });
+
+    $("#choicec").click(function () {
+      console.log(answer);
+      console.log(questions[ticker].choices[2]);
+      if (answer == questions[ticker].choices[2]) {
+        console.log("you are correct");
+        correct++
+        console.log("the number correct is " + correct);
+     //   ticker++;
+        console.log("the ticker is " + ticker);
+    //    nextQuestion();
+    reveal();
+      } else {
+        console.log("this is the wrong answer");
+        incorrect++
+        console.log("the number incorrect is " + incorrect);
+       // ticker++;
+        console.log(ticker);
+      //  nextQuestion();
+      reveal();
+      }
+
+
+    });
+
+    $("#choiced").click(function () {
+      console.log(answer);
+      console.log(questions[ticker].choices[3]);
+      if (answer == questions[ticker].choices[3]) {
+        console.log("you are correct");
+        correct++
+        console.log("the number correct is " + correct);
+    //    ticker++;
+        console.log("the ticker is " + ticker);
+      //  nextQuestion();
+      reveal();
+      } else {
+        console.log("this is the wrong answer");
+        incorrect++
+        console.log("the number incorrect is " + incorrect);
+     //   ticker++;
+        console.log(ticker);
+     //   nextQuestion();
+        reveal();
+      }
+    });
+
   }
-else
- { 
-  console.log(questions[ticker]);
-
-  $("#questions").append(questions[ticker].question);
-  var questionText = questions[ticker].question;
-  var answer = questions[ticker].answer
-
-  console.log("The answer  " + answer + " to the question  " + questions[ticker].question);
-
-  var choicea = $("<div id='choicea' class='choices'>")
-  var choiceb = $("<div id='choiceb' class='choices'>")
-  var choicec = $("<div id='choicec' class='choices'>")
-  var choiced = $("<div id='choiced' class='choices'>")
-  
-
-  choicea.append(questions[ticker].choices[0]);
-  choiceb.append(questions[ticker].choices[1]);
-  choicec.append(questions[ticker].choices[2]);
-  choiced.append(questions[ticker].choices[3]);
-
-  $("#questions").append(choicea, choiceb, choicec, choiced);
-
-  startcountdown();
-
-  $("#choicea").click(function () {
-    console.log(answer);
-    console.log(questions[ticker].choices[0]);
-    if (answer == questions[ticker].choices[0]) {
-      console.log("you are correct");
-      correct++
-      console.log("the number correct is " + correct);
-      ticker++;
-      console.log("the ticker is " + ticker);
-      Questions();
-    } else {
-      console.log("this is the wrong answer");
-      incorrect++
-      console.log("the number incorrect is " + incorrect);
-      ticker++;
-      console.log(ticker);
-      Questions();
-    }
-  });
-  $("#choiceb").click(function () {
-    console.log(answer);
-    console.log(questions[ticker].choices[1]);
-    if (answer == questions[ticker].choices[1]) {
-      console.log("you are correct");
-      correct++
-      console.log("the number correct is " + correct);
-      ticker++;
-      console.log("the ticker is " + ticker);
-      Questions();
-    } else {
-      console.log("this is the wrong answer");
-      incorrect++
-      console.log("the number incorrect is " + incorrect);
-      ticker++;
-      console.log(ticker);
-      Questions();
-    }
-  });
-
-  $("#choicec").click(function () {
-    console.log(answer);
-    console.log(questions[ticker].choices[2]);
-    if (answer == questions[ticker].choices[2]) {
-      console.log("you are correct");
-      correct++
-      console.log("the number correct is " + correct);
-      ticker++;
-      console.log("the ticker is " + ticker);
-      Questions();
-    } else {
-      console.log("this is the wrong answer");
-      incorrect++
-      console.log("the number incorrect is " + incorrect);
-      ticker++;
-      console.log(ticker);
-      Questions();
-    }
-  });
-
-  $("#choiced").click(function () {
-    console.log(answer);
-    console.log(questions[ticker].choices[3]);
-    if (answer == questions[ticker].choices[3]) {
-      console.log("you are correct");
-      correct++
-      console.log("the number correct is " + correct);
-      ticker++;
-      console.log("the ticker is " + ticker);
-      Questions();
-    } else {
-      console.log("this is the wrong answer");
-      incorrect++
-      console.log("the number incorrect is " + incorrect);
-      ticker++;
-      console.log(ticker);
-      Questions();
-    }
-  });
- }
 };
 
-function timesup(){
-  Questions();
+function reveal() {
+  clearInterval(intervalID);
+  $("<h2>").empty();
+  $("#questions").empty();
+  $("#timerDisplay").empty();
+  $("#questions").html(questions[ticker].question);
+  $("#questions").html(questions[ticker].question + "<p>" + "<h1 id='answer'>" + questions[ticker].answer  + "</h1>" + "</p>"); 
+  
+  var answerImage = $("<answerImage>");
+  var answerPic = $("<img>");
+  answerPic.attr("src", questions[ticker].image);
+  
+  $("#questions").append(answerPic);
+ 
+  
+  
+
+  setTimeout(nextQuestion, 5000);
+
+  ticker++;
 }
 
 
 Questions();
 
+
+function nextQuestion() {
+  clearInterval(intervalID);
+  Questions();
+}
+
 //Summary should display number of correct Answers,incorrect Answers
-function endgame(){
+function endgame() {
   console.log("this is the end game function");
 
   $("#questions").empty();
-  
+
   $("#timerDisplay").empty();
 
   var CorrectAnswers = $("<div id='correct' class='results'>")
   var IncorrectAnswers = $("<div id='incorrect' class='results'>")
   var NotAnswered = $("<div id='unanswered' class='results'>")
-  
+
   CorrectAnswers.append("<p>" + "Total Correct Answers: " + correct + "<p>");
-  IncorrectAnswers.append("<p>" + "Total Incorrect Answers:  " + incorrect + "<p>" );
+  IncorrectAnswers.append("<p>" + "Total Incorrect Answers:  " + incorrect + "<p>");
   NotAnswered.append("Total Unanswered Questions:  " + unanswered);
 
 
@@ -205,7 +233,7 @@ function endgame(){
 }
 
 
- 
+
 
 //   CorrectAnswers.append("Questions answered Cor
 
@@ -272,6 +300,3 @@ function endgame(){
 
 
 //Do you want to play again
-
-
-
