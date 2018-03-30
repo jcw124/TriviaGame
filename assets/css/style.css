@@ -48,4 +48,10 @@ body{
 #answer{
 color: blueviolet;
 }
-
+#lose,#win{
+    color: royalblue;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

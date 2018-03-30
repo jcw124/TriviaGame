@@ -3,7 +3,7 @@ $(document).ready(function () {});
 
 //Define global Variables
 //Timers starting value (60s)
-var maxTimer = 10;
+var maxTimer = 5;
 //Questions & Answers Arrays
 var questions;
 //Correct Answers
@@ -227,10 +227,12 @@ function endgame() {
   if (correct > incorrect) {
     audioElement.setAttribute("src", "assets/audio/flavor-flavs-best-yeah-boy.mp3"); 
     audioElement.play();
+    $("#questions").append("<h1 id='win'>" + "You know Hip Hop!" + "</h1>");
   }
   if (incorrect > correct){
-    audioElement.setAttribute("src", "assets/audio/ice-t-you-played-short.mp3"); 
+    audioElement.setAttribute("src", "assets/audio/youplayedyourself.mp3"); 
     audioElement.play();
+    $("#questions").append("<h1 id='lose'>" + "Better Luck Next Time!" + "</h1>");
   }
   }; 
        
