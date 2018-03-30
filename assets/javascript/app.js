@@ -183,20 +183,16 @@ function reveal() {
   $("<h2>").empty();
   $("#questions").empty();
   $("#timerDisplay").empty();
+  //display the question and correct answer
   $("#questions").html(questions[ticker].question);
   $("#questions").html(questions[ticker].question + "<p>" + "<h1 id='answer'>" + questions[ticker].answer  + "</h1>" + "</p>"); 
-  
+  //add the picture of the answer
   var answerImage = $("<answerImage>");
   var answerPic = $("<img>");
-  answerPic.attr("src", questions[ticker].image);
-  
+  answerPic.attr("src", questions[ticker].image); 
   $("#questions").append(answerPic);
- 
-  
-  
-
-  setTimeout(nextQuestion, 5000);
-
+ //set timer for length of time before moving on
+  setTimeout(nextQuestion, 3000);
   ticker++;
 }
 
@@ -228,10 +224,17 @@ function endgame() {
 
   $("#questions").append(CorrectAnswers, IncorrectAnswers);
 
-
-
-}
-
+  if (correct > incorrect) {
+    audioElement.setAttribute("src", "assets/audio/flavor-flavs-best-yeah-boy.mp3"); 
+    audioElement.play();
+  }
+  if (incorrect > correct){
+    audioElement.setAttribute("src", "assets/audio/ice-t-you-played-short.mp3"); 
+    audioElement.play();
+  }
+  }; 
+       
+ 
 
 
 

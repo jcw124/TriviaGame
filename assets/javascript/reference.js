@@ -29,7 +29,7 @@
          "question": "Which is the only A Tribe Called Quest album to feature Jarobi White as a member of the group?",
          "answer": "Peoples Instinctive Travels and the Paths of Rhythm",
          "choices": ["The Low End Theory", "Beats, Rhymes and Life", "The Love Movement", "Peoples Instinctive Travels and the Paths of Rhythm"],
-         "image": "assets/images/pitpr.jpg"
+         "image": "assets/images/tribe.jpg"
      },
      {
          "question": "What was the first officially released song Nas appeared on?",
@@ -59,7 +59,7 @@
          "question": "Which is the only Gang Starr album to reach No. 1 on the Top R&B/Hip-Hop Albums chart?",
          "answer": "Moment of Truth",
          "choices": ["The Ownerz", "Daily Operation", "Moment of Truth", "Hard to Earn"],
-         "image": "assets/images/momentoftruth.jpg"
+         "image": "assets/images/Gangstarrmomentoftruth.jpg"
      },
      {
          "question": "What year did the Stop the Violence Movement release the single 'Self Destruction' featuring several major hip hop artists?",
